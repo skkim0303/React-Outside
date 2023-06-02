@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GuGuDan : class Type (JSX)</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>  
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+  
+  <script type="text/babel"> 
+    'use strict'; 
+
+    class GuGuDan extends React.Component {
+      constructor(props) { // 생성자
+        super(props); // 초기화
+        this.state = {
+          first: Math.ceil(Math.random() * 9),
+          second: Math.ceil(Math.random() * 9),
+          value: '',
+          result1: '',
+          result2: '',
+        }; //변하는 상태
+      }
+
+      onSubmit = (e) => { // 제출시 적용되는 함수로직(Boolean) 구현
+        e.preventDefault();
+        if(parseInt(this.state.value) === this.state.first * this.state.second) { // 입력하는 숫자(정수) = first * second : true
+          this.setState({ // 순서 (결과 -> first -> second -> value(0))
+            result1: '제출답: ' + '(' + this.state.first + ' X ' + this.state.second + ' = ' + this.state.value +')',
+            result2: '정답',
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: '',
+          });
+          this.input.focus();
+        } else {
+          this.setState({
+            result1: '제출답: ' + '(' + this.state.first + ' X ' + this.state.second + ' = ' + this.state.value +')',
+            result2: '땡 :' + 'Try Again!',
+            value: '',
+          });
+          this.input.focus();
+        }
+      }
+
+      onChange = (e) => {this.setState({value: e.target.value})}
+
+      input;
+
+      render() { // form => onSubmit, input => onChange, button => onClick   
+        return ( // 화면 부분
+          <>
+            <div>{this.state.first} 곱하기 {this.state.second} 는?</div>
+            <form onSubmit = {this.onSubmit}>                              
+              <input ref={(c) => {this.input = c}} 
+              type="number" value = {this.state.value} // input에 focus는 ref = {()=>{}} 
+              // 수동입력 handler, 외부로 빼기 위해서는 form handler 함수지정
+              onChange = {this.onChange} 
+              />
+              <button>입력</button>
+            </form>
+            <div>{this.state.result1}</div>
+            <div>{this.state.result2}</div>
+          </>
+        );  
+      }
+    }    
+  </script>
+
+  <script type="text/babel">     
+    ReactDOM.createRoot(document.querySelector('#root')).render(<GuGuDan />); // ver.18
+    
+  </script>
+  
+</body>
+</html>

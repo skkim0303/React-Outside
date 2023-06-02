@@ -1,0 +1,95 @@
+/* Add this CSS code in a separate CSS file or within a <style> tag */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.input-field {
+  padding: 10px;
+  width: 80px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.result-container {
+  margin-top: 30px;
+}
+
+.result {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.correct-answer {
+  color: #1abc9c;
+}
+
+.wrong-answer {
+  color: #e74c3c;
+}
+
+/* Customized colors for numbers and text */
+
+.number {
+  color: #f39c12;
+}
+
+.korean {
+  color: #9b59b6;
+}
+
+.english {
+  color: #e74c3c;
+}
