@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GuGuDan : class Type (Blog)</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>  
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+  
+  <script type="text/babel"> 
+    'use strict'; 
+
+    class GuGuDan extends React.Component {
+      constructor(props) { // 생성자
+        super(props); // 초기화
+        this.state = {
+          first: Math.ceil(Math.random() *9),
+          second: Math.ceil(Math.random() *9),
+          value: '',
+          result1: '',
+          result2: '',
+        }; //변하는 상태
+      }
+      render() {
+        
+        return (
+          <>
+            <div>{this.state.first} 곱하기 {this.state.second} 는?</div>
+          </>
+        );// 화면 부분           
+        
+      }
+    }    
+  </script>
+
+  <script type="text/babel">     
+    ReactDOM.createRoot(document.querySelector('#root')).render(<GuGuDan />); // ver.18
+    
+  </script>
+  
+</body>
+</html>
